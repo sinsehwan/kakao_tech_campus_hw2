@@ -17,7 +17,7 @@
   "password": "1234"
 }
 
-2. 단일 일정정 조회
+2. 단일 일정 조회
 
 - METHOD: GET
 - URL(ex): http://localhost:8080/schedules/1

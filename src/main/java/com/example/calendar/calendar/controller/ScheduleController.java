@@ -19,6 +19,7 @@ public class ScheduleController {
     private final ScheduleService scheduleService;
 
     // 일정 생성
+    // validation check
     @PostMapping
     public ResponseEntity<ScheduleResponseDto> createSchedule(
             @RequestBody @Valid ScheduleRequestDto requestDto,

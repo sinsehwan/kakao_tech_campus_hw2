@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class Schedule {
     private Long id;
-    private Long userId;
+    private Long userId; // 작성자의 식별자 (FK)
     private String todo;
     private String author;
     private String password;

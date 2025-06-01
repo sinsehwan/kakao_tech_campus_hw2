@@ -3,7 +3,9 @@ package com.example.calendar.calendar.service;
 import com.example.calendar.calendar.dto.ScheduleRequestDto;
 import com.example.calendar.calendar.dto.ScheduleResponseDto;
 import com.example.calendar.calendar.entity.Schedule;
+import com.example.calendar.calendar.entity.User;
 import com.example.calendar.calendar.repository.ScheduleRepository;
+import com.example.calendar.calendar.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,7 @@ import java.util.List;
 public class ScheduleServiceImpl implements ScheduleService{
 
     private final ScheduleRepository scheduleRepository;
+    private final UserRepository userRepository;
 
     @Override
     public ScheduleResponseDto saveSchedule(ScheduleRequestDto requestDto, Long userId) {
@@ -31,7 +34,9 @@ public class ScheduleServiceImpl implements ScheduleService{
     public ScheduleResponseDto getScheduleById(Long id) {
         Schedule result = scheduleRepository.findByIdElseThrow(id);
 
-        return new ScheduleResponseDto(result.getId(), result.getUserId(), result.getTodo(), result.getAuthor(), result.getCreatedAt(), result.getModifiedAt());
+        User user = userRepository.findById(result.getUserId());
+
+        return new ScheduleResponseDto(result.getId(), result.getUserId(), result.getTodo(), user.getEmail(), result.getCreatedAt(), result.getModifiedAt());
     }
 
     // 작성자 일정 수정일 내림차순으로 반환

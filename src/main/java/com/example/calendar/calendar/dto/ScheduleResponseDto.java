@@ -13,7 +13,7 @@ public class ScheduleResponseDto {
     // step3
     private Long userId;
     private String todo;
-    private String author;
+    private String authorEmail; // user.email
     private LocalDateTime createdAt;
     private LocalDateTime modifiedAt;
 }
